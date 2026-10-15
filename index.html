@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meet Lilo, my sister's dog, and try the interactive Lilo quiz.">
+    <title>Lilo - My Sister's Dog</title>
+    <!-- Bootstrap 5 CSS (BS5 Get Started) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- My own CSS: only Lilo's colours on top of Bootstrap -->
+    <link rel="stylesheet" href="style.css">
+    <!-- load the JQuery before the JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap 5 JavaScript (needed for Navbar toggler and Collapse) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- BS5 Navbar: turns into a hamburger menu on small screens -->
+    <nav class="navbar navbar-expand-sm bg-lilo-deep rounded-bottom-4 mx-3 mx-md-5" aria-label="Main navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold d-sm-none" href="#top">Lilo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks"
+                aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navLinks">
+                <ul class="navbar-nav mx-auto gap-sm-4">
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#lilo">Lilo</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#about">About Lilo</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#signup">Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#interactive">Interactive</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BS5 Jumbotron: built with padding and text utilities -->
+    <header id="top" class="container text-center py-5 my-md-4">
+        <p class="eyebrow text-uppercase fw-bold text-lilo">Get to know Lilo</p>
+        <h1 class="display-4 fw-bold">Get to know <span class="text-lilo-accent">Lilo</span>.</h1>
+        <p class="lead">A page about my sister's dog, to try out functions of CSS, JS, DOM and Bootstrap 5.</p>
+        <a class="btn btn-lilo btn-lg rounded-pill" href="#about">Get to know Lilo</a>
+    </header>
+
+    <!-- BS5 Containers + Grid -->
+    <main class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-9">
+
+                <!-- BS5 Cards + Grid + Images -->
+                <section id="lilo" class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card-body p-4 p-md-5">
+                        <div class="row g-4 align-items-center">
+                            <div class="col-md-6">
+                                <img class="img-fluid rounded-4 dog-photo" src="IMG_0346.thumbnail.jpg"
+                                    alt="Lilo, my sister's dog">
+                            </div>
+                            <div class="col-md-6">
+                                <h2 class="text-lilo fw-bold">This is my sister's dog</h2>
+                                <p>Her name is <strong class="text-lilo-accent">Lilo</strong>.</p>
+                                <a class="btn btn-lilo rounded-pill"
+                                    href="https://steffimitffuni.github.io/MyFirstWebApp/" target="_blank"
+                                    rel="noopener noreferrer">To see how far this Website has come look at
+                                    the first draft here</a>
+                                <p id="photoCaption" class="text-lilo fw-semibold mt-3 mb-0" aria-live="polite">This is
+                                    Lilo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- BS5 Collapse (replaces the jQuery slideToggle) + Alerts -->
+                <section id="about" class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="text-lilo fw-bold">About Lilo</h2>
+                        <button type="button" id="toggleAbout" class="btn btn-lilo rounded-pill mb-3"
+                            data-bs-toggle="collapse" data-bs-target="#aboutContent" aria-expanded="true"
+                            aria-controls="aboutContent">Hide Lilo facts ▲</button>
+                        <div id="aboutContent" class="collapse show">
+                            <p>Lilo is a lovely dog. Explore the page to learn a little more about her!</p>
+                            <div class="alert alert-lilo d-flex align-items-start gap-3">
+                                <span class="fs-2" aria-hidden="true">🐾</span>
+                                <div>
+                                    <h3 class="h6 fw-bold mb-1">Lilo fact</h3>
+                                    <p id="factText" class="mb-0" aria-live="polite">Click the button to reveal a little
+                                        Lilo fact.</p>
+                                </div>
+                            </div>
+                            <button type="button" id="factButton" class="btn btn-lilo rounded-pill">Show a fact</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- JavaScript API + BS5 Spinner -->
+                <section id="meet-dog" class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="text-lilo fw-bold">Meet a Random Dog!</h2>
+                        <p>Click below to discover a dog from the API.</p>
+
+                        <button type="button" id="dogButton" class="btn btn-lilo rounded-pill">
+                            <span id="dogSpinner" class="spinner-border spinner-border-sm me-2 d-none"
+                                aria-hidden="true"></span>
+                            Find a Dog
+                        </button>
+
+                        <p id="dogMessage" class="text-lilo fw-semibold mt-3" role="status" aria-live="polite">
+                            Click the button to meet a dog!
+                        </p>
+
+                        <div id="dogDetails" class="row g-4" hidden>
+                            <div class="col-md-5">
+                                <img id="randomDog" class="img-fluid rounded-4 dog-photo"
+                                    alt="Random dog from the FreeAPI">
+                            </div>
+                            <div class="col-md-7">
+                                <h3 id="dogName" class="h4 fw-bold"></h3>
+                                <p class="mb-1"><strong>Breed group:</strong> <span id="dogBreed"></span></p>
+                                <p class="mb-1"><strong>Temperament:</strong> <span id="dogTemperament"></span></p>
+                                <p class="mb-1"><strong>Life span:</strong> <span id="dogLifespan"></span></p>
+                                <p class="mb-1"><strong>Weight:</strong> <span id="dogWeight"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- HTML Form + BS5 Forms, Checks and Form Validation -->
+                <section id="signup" class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="text-lilo fw-bold">Stay in the loop</h2>
+                        <p>Your E-Mail will be stored on a database on supabase which will be deleted after this module
+                            is over and graded.</p>
+                        <form id="signupForm" class="col-md-8" novalidate>
+                            <div class="mb-3">
+                                <label for="email" class="form-label fw-bold">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="you@example.com" autocomplete="email" required>
+                                <div class="invalid-feedback">Please enter a valid email address.</div>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="dogUpdates" name="dogUpdates">
+                                <label class="form-check-label" for="dogUpdates">I'd like occasional Lilo
+                                    updates</label>
+                            </div>
+                            <button type="submit" class="btn btn-lilo rounded-pill">Sign up</button>
+                        </form>
+                        <div id="message" role="status" aria-live="polite"></div>
+                    </div>
+                </section>
+
+                <!-- BS5 Input Groups, Button Groups and Alerts -->
+                <section id="interactive" class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="text-lilo fw-bold">Interactive Lilo</h2>
+                        <p>Answer the questions below and see what Lilo has to say.</p>
+
+                        <div class="bg-lilo-light rounded-4 p-4 mb-3">
+                            <h3 class="h5 fw-bold">1. How many walks a day would you do with Lilo?</h3>
+                            <form id="walkForm">
+                                <label for="walks" class="form-label fw-bold">Number of walks</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="walks" name="walks" min="1" max="20"
+                                        step="1" placeholder="Enter a number" required>
+                                    <button type="submit" class="btn btn-lilo">Ask Lilo</button>
+                                </div>
+                            </form>
+                            <div id="walkMessage" role="status" aria-live="polite"></div>
+                        </div>
+
+                        <div class="bg-lilo-light rounded-4 p-4 mb-3">
+                            <h3 class="h5 fw-bold">2. Do you think Lilo gets along with other dogs?</h3>
+                            <div class="btn-group" role="group" aria-label="Does Lilo get along with other dogs?">
+                                <button type="button" class="btn btn-outline-lilo answer-button" data-answer="yes"
+                                    aria-pressed="false">Yes</button>
+                                <button type="button" class="btn btn-outline-lilo answer-button" data-answer="no"
+                                    aria-pressed="false">No</button>
+                            </div>
+                            <div id="quizMessage" role="status" aria-live="polite"></div>
+                        </div>
+
+                        <div class="bg-lilo-light rounded-4 p-4 mb-3">
+                            <h3 class="h5 fw-bold">3. Name Lilo's best friend</h3>
+                            <form id="friendForm">
+                                <label for="friendName" class="form-label fw-bold">What would you name Lilo's best
+                                    friend?</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="friendName" name="friendName"
+                                        placeholder="Enter a name" maxlength="40" required>
+                                    <button type="submit" class="btn btn-lilo">Submit name</button>
+                                </div>
+                            </form>
+                            <div id="friendMessage" role="status" aria-live="polite"></div>
+                        </div>
+
+                        <button type="button" id="resetButton" class="btn btn-outline-secondary rounded-pill mt-2">Reset
+                            interactive answers</button>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-lilo-deep text-center py-4">
+        <a class="fw-bold text-lilo text-decoration-none" href="#top">Back to top ↑</a>
+    </footer>
+</body>
+
+</html>

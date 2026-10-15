@@ -1,0 +1,90 @@
+/* Lilo's pink theme.
+   Layout, spacing, cards, forms and responsiveness come from Bootstrap 5.
+   This file only adds Lilo's colours. */
+
+:root {
+    --lilo-pink: #fbe1ef;
+    --lilo-pink-deep: #f4a5c9;
+    --lilo-pink-light: #fff5fa;
+    --lilo-purple: #6d2c7a;
+    --lilo-accent: #a32c72;
+}
+
+body {
+    background: var(--lilo-pink);
+    font-family: Helvetica, Arial, sans-serif;
+    /* same font as my first version */
+}
+
+/* Colour helpers in the same style as Bootstrap's (bg-*, text-*) */
+.bg-lilo-deep {
+    background: var(--lilo-pink-deep);
+}
+
+.bg-lilo-light {
+    background: var(--lilo-pink-light);
+}
+
+.text-lilo {
+    color: var(--lilo-purple);
+}
+
+.text-lilo-accent {
+    color: var(--lilo-accent);
+}
+
+.eyebrow {
+    letter-spacing: 0.12em;
+}
+
+/* Navbar link colours (Bootstrap reads them from these variables) */
+.navbar {
+    --bs-navbar-color: var(--lilo-purple);
+    --bs-navbar-hover-color: var(--lilo-accent);
+    --bs-navbar-brand-color: var(--lilo-purple);
+}
+
+/* Purple buttons: Bootstrap buttons read their colours from --bs-btn-* variables */
+.btn-lilo {
+    --bs-btn-bg: var(--lilo-purple);
+    --bs-btn-border-color: var(--lilo-purple);
+    --bs-btn-color: #fff;
+    --bs-btn-hover-bg: var(--lilo-accent);
+    --bs-btn-hover-border-color: var(--lilo-accent);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-bg: var(--lilo-accent);
+    --bs-btn-active-border-color: var(--lilo-accent);
+    --bs-btn-active-color: #fff;
+    --bs-btn-disabled-bg: var(--lilo-purple);
+    --bs-btn-disabled-border-color: var(--lilo-purple);
+    --bs-btn-font-weight: 700;
+}
+
+.btn-outline-lilo {
+    --bs-btn-color: var(--lilo-purple);
+    --bs-btn-border-color: var(--lilo-purple);
+    --bs-btn-hover-bg: var(--lilo-purple);
+    --bs-btn-hover-border-color: var(--lilo-purple);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-bg: var(--lilo-purple);
+    --bs-btn-active-border-color: var(--lilo-purple);
+    --bs-btn-active-color: #fff;
+    --bs-btn-font-weight: 700;
+}
+
+/* Fact box: a Bootstrap alert in Lilo's colours */
+.alert-lilo {
+    background: var(--lilo-pink-light);
+    border-color: var(--lilo-pink-deep);
+}
+
+.form-check-input:checked {
+    background-color: var(--lilo-purple);
+    border-color: var(--lilo-purple);
+}
+
+.dog-photo {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+}
